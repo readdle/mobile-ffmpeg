@@ -243,8 +243,10 @@ CallbackData *callbackDataRemove() {
     [lock lock];
 
     @try {
-        newData = [callbackDataArray objectAtIndex:0];
-        [callbackDataArray removeObjectAtIndex:0];
+        if(callbackDataArray.count > 0) {
+            newData = [callbackDataArray objectAtIndex:0];
+            [callbackDataArray removeObjectAtIndex:0];
+        }
     } @catch(NSException *exception) {
         // DO NOTHING
     } @finally {
